@@ -1,0 +1,77 @@
+" :noremap 不做进一次扫描
+" :map 继续深度扫描快捷键映射
+" :unmap 取消 :map绑定
+" :nmap是:map的普通版 其绑定的键只作用于普通模式
+
+let mapleader = " "
+" let mapleader = "\<space>"
+" 文件高亮与取消
+set hlsearch
+nnoremap <leader><CR> :nohlsearch<CR>
+
+" 相对行号
+"set nu
+"set relativenumber
+
+" 全局搜索 搜索文件 搜索cla全局搜索 搜索文件 搜索class
+nnoremap <leader>d :action FindInPath<CR>
+nnoremap <leader>f :action GotoFile<CR>
+nnoremap <leader>n :action GotoClass<CR>
+
+" 禁用backspace/delete按键"
+nnoremap <backspace> <nop>
+inoremap <backspace> <nop>
+
+
+" 注释
+nnoremap cc :action CommentByLineComment<CR>
+
+" 文件跳转
+nnoremap <leader>s :action GotoFile<CR>
+
+" 修改当前文件的文件
+nnoremap <leader>rf :action RenameFile<CR>
+
+" Tab operationQ
+" (切换标签)
+nnoremap <leader>j  gT
+nnoremap <leader>k gt
+
+" 函数跳转Back/Forward
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap <c-o>  :action Back<CR>
+nnoremap <c-i> :action Forward<CR>
+
+
+nnoremap ma :action NewFile<CR>
+nnoremap S :action SaveAll<CR>
+nmap Q :q<cr>
+unmap s
+
+" Split
+nmap sl :set splitright<CR>:vsplit<CR>
+ left split
+nmap sh :set nosplitright<CR>:vsplit<CR>
+" up split
+nmap sk :set nosplitbelow<CR>:split<CR>
+" down split
+nmap sj :set splitbelow<CR>:split<CR>
+
+" cursor right
+nnoremap <S-k> <C-w>k
+tmap <S-k> <C-w>k
+" cursor left
+map <S-j> <C-w>j
+tmap <S-j> <C-w>j
+" cursor up
+map <S-h> <C-w>h
+tmap <S-h> <C-w>h
+" cursor down
+map <S-l> <C-w>l
+tmap <S-l> <C-w>l
+
+
+
+
+
+
