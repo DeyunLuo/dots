@@ -37,9 +37,11 @@ set encoding=utf-8
 "syntax enable "开启语法高亮功能
 "syntax on  "允许使用指定语法高亮配色方案代替默认方案
 " 禁用backspace/delete按键
-" set backspace=0
-nnoremap <backspace> <nop>
-inoremap <backspace> <nop>
+" more powerful backspacing
+" set backspace=indent,eol,start
+set backspace=2
+" nnoremap <backspace> <nop>
+" inoremap <backspace> <nop>
 
 set expandtab "将制表符扩展为空格
 set tabstop=4 "设置编辑时制表符所占空格数
@@ -135,6 +137,15 @@ call plug#begin('~/.vim/plugged')
 "vim启动
 Plug 'mhinz/vim-startify' 
 
+" material主题
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+
+" markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+
 "vim aiarline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -209,18 +220,38 @@ let g:neoformat_python_autopep8 = {
 
 let g:neoformat_enabled_python = ['autopep8']
 
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 " ===
 " === 主题设置
 " ===
-"colorscheme molokai
-colorscheme gruvbox
-" 透明背景
-let g:molokai_original = 1
-"colorscheme snazzy
-let g:SnazzyTransparent = 1
+" colorscheme molokai
+" colorscheme gruvbox
+" colorscheme snazzy
+colorscheme material
+
+"let g:material_style='palenight'
+" let g:molokai_original = 1
+"let g:SnazzyTransparent = 1
+let g:impact_transbg=1
 let g:rehash256 = 1
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'palenight'
+set t_Co=256
 set background=dark
+
+" For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
+if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+endif
+
+" For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
+" Based on Vim patch 7.4.1770 (`guicolors` option) - https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd
+" https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
+if (has('termguicolors'))
+  set termguicolors
+endif
 
 
 " ===
@@ -284,7 +315,8 @@ let g:python_highlight_all = 1
 " ===
 " ===
 let g:airline_powerline_fonts = 1
-let g:airline_theme='deus'
+"let g:airline_theme='deus'
+let g:airline_theme='material'
 let g:Powerline_symbols='fancy'
 let Powerline_symbols='fancy'
 set t_Co=256 " 状态栏就有颜色了" ...

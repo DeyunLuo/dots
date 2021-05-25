@@ -5,6 +5,7 @@
 
 let mapleader = " "
 " let mapleader = "\<space>"
+
 " 文件高亮与取消
 set hlsearch
 nnoremap <leader><CR> :nohlsearch<CR>
@@ -18,9 +19,12 @@ nnoremap <leader>d :action FindInPath<CR>
 nnoremap <leader>f :action GotoFile<CR>
 nnoremap <leader>n :action GotoClass<CR>
 
+" nerdtree
+" nnoremap <leader><leader> <M-1>
+
 " 禁用backspace/delete按键"
-nnoremap <backspace> <nop>
-inoremap <backspace> <nop>
+" nnoremap <backspace> <nop>
+" inoremap <backspace> <nop>
 
 
 " 注释
@@ -34,8 +38,8 @@ nnoremap <leader>rf :action RenameFile<CR>
 
 " Tab operationQ
 " (切换标签)
-nnoremap <leader>j  gT
-nnoremap <leader>k gt
+nnoremap <s-j> :action PreviousTab<CR>
+nnoremap <s-k> :action NextTab<CR>
 
 " 函数跳转Back/Forward
 nnoremap gd :action GotoDeclaration<CR>
@@ -44,6 +48,8 @@ nnoremap <c-i> :action Forward<CR>
 
 
 nnoremap ma :action NewFile<CR>
+
+" save or quit
 nnoremap S :action SaveAll<CR>
 nmap Q :q<cr>
 unmap s
@@ -58,11 +64,11 @@ nmap sk :set nosplitbelow<CR>:split<CR>
 nmap sj :set splitbelow<CR>:split<CR>
 
 " cursor right
-nnoremap <S-k> <C-w>k
-tmap <S-k> <C-w>k
+" nnoremap <S-k> <C-w>k
+" tmap <S-k> <C-w>k
 " cursor left
-map <S-j> <C-w>j
-tmap <S-j> <C-w>j
+" map <S-j> <C-w>j
+" tmap <S-j> <C-w>j
 " cursor up
 map <S-h> <C-w>h
 tmap <S-h> <C-w>h
@@ -75,3 +81,4 @@ tmap <S-l> <C-w>l
 
 
 
+set ideajoin
